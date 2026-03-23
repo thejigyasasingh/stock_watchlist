@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import '../data/models.dart';
 
-/// Base class for all watchlist states
 abstract class WatchlistState extends Equatable {
   const WatchlistState();
 
@@ -9,7 +8,6 @@ abstract class WatchlistState extends Equatable {
   List<Object?> get props => [];
 }
 
-/// Initial state before any data is loaded
 class WatchlistInitial extends WatchlistState {
   const WatchlistInitial();
 
@@ -17,7 +15,6 @@ class WatchlistInitial extends WatchlistState {
   String toString() => 'WatchlistInitial';
 }
 
-/// State when watchlist is being loaded
 class WatchlistLoading extends WatchlistState {
   const WatchlistLoading();
 
@@ -25,7 +22,6 @@ class WatchlistLoading extends WatchlistState {
   String toString() => 'WatchlistLoading';
 }
 
-/// State when watchlist is successfully loaded
 class WatchlistLoaded extends WatchlistState {
   final List<Stock> stocks;
   final bool isReordering;
@@ -37,7 +33,6 @@ class WatchlistLoaded extends WatchlistState {
     this.successMessage,
   });
 
-  /// Create a copy with updated fields
   WatchlistLoaded copyWith({
     List<Stock>? stocks,
     bool? isReordering,
@@ -57,7 +52,6 @@ class WatchlistLoaded extends WatchlistState {
   String toString() => 'WatchlistLoaded(stocks: ${stocks.length}, reordering: $isReordering)';
 }
 
-/// State when an error occurs
 class WatchlistError extends WatchlistState {
   final String message;
   final List<Stock>? previousStocks; // Keep previous data for recovery

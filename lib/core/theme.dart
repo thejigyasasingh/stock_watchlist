@@ -19,7 +19,6 @@ class AppTheme {
       primaryColor: primaryColor,
       scaffoldBackgroundColor: backgroundColor,
 
-      // Color scheme
       colorScheme: const ColorScheme.dark(
         primary: primaryColor,
         secondary: accentColor,
@@ -60,7 +59,6 @@ class AppTheme {
         ),
       ),
 
-      // AppBar theme
       appBarTheme: AppBarTheme(
         backgroundColor: backgroundColor,
         elevation: 0,
@@ -89,12 +87,10 @@ class AppTheme {
         elevation: 6,
       ),
 
-      // Icon theme
       iconTheme: const IconThemeData(
         color: textSecondary,
       ),
 
-      // Divider theme
       dividerTheme: DividerThemeData(
         color: textSecondary.withOpacity(0.2),
         thickness: 1,

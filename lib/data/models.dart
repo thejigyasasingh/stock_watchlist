@@ -1,7 +1,5 @@
 import 'package:equatable/equatable.dart';
 
-/// Represents a stock in the watchlist
-/// Uses Equatable for value comparison and immutability
 class Stock extends Equatable {
   final String id;
   final String symbol;
@@ -21,10 +19,8 @@ class Stock extends Equatable {
     required this.position,
   });
 
-  /// Helper to check if stock is gaining value
   bool get isPositive => changeAmount >= 0;
 
-  /// Creates a copy of this stock with updated fields
   Stock copyWith({
     String? id,
     String? symbol,
@@ -45,7 +41,6 @@ class Stock extends Equatable {
     );
   }
 
-  /// Equatable props for value comparison
   @override
   List<Object?> get props => [
     id,
@@ -60,7 +55,6 @@ class Stock extends Equatable {
   @override
   String toString() => 'Stock(symbol: $symbol, position: $position, price: \$$currentPrice)';
 
-  /// Factory method to create from JSON (for future API integration)
   factory Stock.fromJson(Map<String, dynamic> json) {
     return Stock(
       id: json['id'] as String,
@@ -73,7 +67,6 @@ class Stock extends Equatable {
     );
   }
 
-  /// Convert to JSON (for future API integration)
   Map<String, dynamic> toJson() {
     return {
       'id': id,

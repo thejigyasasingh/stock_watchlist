@@ -50,7 +50,6 @@ class WatchlistScreen extends StatelessWidget {
             context.read<WatchlistBloc>().add(const RefreshWatchlist());
           },
         ),
-        // More options menu
         PopupMenuButton<String>(
           icon: const Icon(Icons.more_vert_rounded),
           onSelected: (value) => _handleMenuSelection(context, value),
@@ -173,10 +172,8 @@ class WatchlistScreen extends StatelessWidget {
   Widget _buildLoadedState(BuildContext context, WatchlistLoaded state) {
     return Column(
       children: [
-        // Summary header
         _buildSummaryHeader(context, state),
 
-        // Instruction hint (optional - remove after first use)
         if (state.stocks.isNotEmpty)
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -209,14 +206,13 @@ class WatchlistScreen extends StatelessWidget {
             ),
           ),
 
-        // Stock list with improved drag feedback
         Expanded(
           child: ReorderableListView.builder(
             padding: const EdgeInsets.only(top: 8, bottom: 80),
             itemCount: state.stocks.length,
-            buildDefaultDragHandles: true, // Enable default drag handles
+            buildDefaultDragHandles: true,
             onReorder: (oldIndex, newIndex) {
-              print('📍 Reordering: $oldIndex → $newIndex'); // Debug log
+              print(' Reordering: $oldIndex → $newIndex');
 
               context.read<WatchlistBloc>().add(
                 ReorderStocks(
@@ -229,7 +225,7 @@ class WatchlistScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               final stock = state.stocks[index];
               return StockCard(
-                key: ValueKey(stock.id), // CRITICAL: Must have unique key
+                key: ValueKey(stock.id),
                 stock: stock,
                 isDragging: state.isReordering,
                 onDismissed: () {
@@ -244,7 +240,6 @@ class WatchlistScreen extends StatelessWidget {
   }
 
   Widget _buildSummaryHeader(BuildContext context, WatchlistLoaded state) {
-    // FIXED: Remove the '?' - stock is never null in the list
     final gainers = state.stocks.where((s) => s.isPositive).length;
     final losers = state.stocks.length - gainers;
 
@@ -323,7 +318,6 @@ class WatchlistScreen extends StatelessWidget {
     );
   }
 
-  /// Build vertical divider
   Widget _buildDivider() {
     return Container(
       height: 60,
@@ -332,7 +326,6 @@ class WatchlistScreen extends StatelessWidget {
     );
   }
 
-  /// Build initial state
   Widget _buildInitialState() {
     return Center(
       child: Column(
@@ -356,8 +349,6 @@ class WatchlistScreen extends StatelessWidget {
       ),
     );
   }
-
-  /// Custom proxy decorator for dragging animation
   Widget _proxyDecorator(Widget child, int index, Animation<double> animation) {
     return AnimatedBuilder(
       animation: animation,
@@ -372,7 +363,6 @@ class WatchlistScreen extends StatelessWidget {
     );
   }
 
-  /// Build floating action button
   Widget _buildFAB(BuildContext context) {
     return FloatingActionButton.extended(
       onPressed: () => _showAddStockDialog(context),
@@ -382,7 +372,6 @@ class WatchlistScreen extends StatelessWidget {
     );
   }
 
-  /// Show dialog to add new stock
   void _showAddStockDialog(BuildContext context) {
     final symbolController = TextEditingController();
     final nameController = TextEditingController();
@@ -459,7 +448,6 @@ class WatchlistScreen extends StatelessWidget {
     );
   }
 
-  /// Handle stock removal with confirmation
   void _removeStock(BuildContext context, String stockId, String symbol) {
     context.read<WatchlistBloc>().add(RemoveStock(stockId));
 
@@ -481,7 +469,6 @@ class WatchlistScreen extends StatelessWidget {
           label: 'UNDO',
           textColor: AppTheme.primaryColor,
           onPressed: () {
-            // In production, implement undo functionality
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
                 content: Text('Undo feature - Coming soon!'),
@@ -494,7 +481,6 @@ class WatchlistScreen extends StatelessWidget {
     );
   }
 
-  /// Handle state changes and show messages
   void _handleStateChanges(BuildContext context, WatchlistState state) {
     if (state is WatchlistLoaded && state.successMessage != null) {
       ScaffoldMessenger.of(context).showSnackBar(

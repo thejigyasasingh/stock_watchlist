@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Widget displayed when watchlist is empty
 class EmptyWatchlist extends StatelessWidget {
   const EmptyWatchlist({super.key});
 
@@ -10,7 +9,6 @@ class EmptyWatchlist extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Animated icon
           TweenAnimationBuilder<double>(
             tween: Tween(begin: 0.0, end: 1.0),
             duration: const Duration(milliseconds: 800),
@@ -37,7 +35,6 @@ class EmptyWatchlist extends StatelessWidget {
 
           const SizedBox(height: 32),
 
-          // Title
           Text(
             'No Stocks in Watchlist',
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -47,7 +44,6 @@ class EmptyWatchlist extends StatelessWidget {
 
           const SizedBox(height: 12),
 
-          // Subtitle
           Text(
             'Add stocks to start tracking their performance',
             style: Theme.of(context).textTheme.bodyMedium,
@@ -56,10 +52,8 @@ class EmptyWatchlist extends StatelessWidget {
 
           const SizedBox(height: 32),
 
-          // Call to action
           OutlinedButton.icon(
             onPressed: () {
-              // This will be handled by the parent widget
             },
             icon: const Icon(Icons.add),
             label: const Text('Add Your First Stock'),

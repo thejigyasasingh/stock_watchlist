@@ -52,7 +52,6 @@ class StockCard extends StatelessWidget {
     );
   }
 
-  /// Build drag handle icon
   Widget _buildDragHandle() {
     return Icon(
       Icons.drag_indicator,
@@ -61,7 +60,6 @@ class StockCard extends StatelessWidget {
     );
   }
 
-  /// Build stock symbol icon/avatar
   Widget _buildStockIcon() {
     return Container(
       width: 56,
@@ -97,7 +95,6 @@ class StockCard extends StatelessWidget {
     );
   }
 
-  /// Build stock information section
   Widget _buildStockInfo(BuildContext context) {
     return Expanded(
       child: Column(
@@ -119,7 +116,6 @@ class StockCard extends StatelessWidget {
     );
   }
 
-  /// Build price information section
   Widget _buildPriceInfo(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -134,7 +130,6 @@ class StockCard extends StatelessWidget {
     );
   }
 
-  /// Build change indicator chip
   Widget _buildChangeIndicator() {
     return Container(
       padding: const EdgeInsets.symmetric(
@@ -180,7 +175,6 @@ class StockCard extends StatelessWidget {
     );
   }
 
-  /// Build dismiss background (shown when swiping)
   Widget _buildDismissBackground() {
     return Container(
       alignment: Alignment.centerRight,
@@ -211,7 +205,6 @@ class StockCard extends StatelessWidget {
     );
   }
 
-  /// Show stock details dialog
   void _showStockDetails(BuildContext context) {
     showDialog(
       context: context,

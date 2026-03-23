@@ -102,7 +102,6 @@ class WatchlistRepository {
 
   Future<List<Stock>> fetchWatchlist() async {
     await Future.delayed(const Duration(milliseconds: 800));
-    // refresh data
     _cachedStocks ??= _getSampleStocks();
     return List.from(_cachedStocks!);
   }
@@ -120,7 +119,6 @@ class WatchlistRepository {
     }
   }
 
-  /// Remove stock from watchlist
   Future<bool> removeStock(String stockId) async {
     try {
       await Future.delayed(const Duration(milliseconds: 200));
@@ -133,7 +131,6 @@ class WatchlistRepository {
     }
   }
 
-  /// Add stock to watchlist
   Future<Stock?> addStock(String symbol, String companyName) async {
     try {
       await Future.delayed(const Duration(milliseconds: 500));
@@ -156,7 +153,6 @@ class WatchlistRepository {
     }
   }
 
-  /// Clear cache (useful for refresh)
   void clearCache() {
     _cachedStocks = null;
   }

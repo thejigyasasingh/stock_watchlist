@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 
-/// Base class for all watchlist events
 abstract class WatchlistEvent extends Equatable {
   const WatchlistEvent();
 
@@ -8,7 +7,6 @@ abstract class WatchlistEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-/// Event to load initial watchlist data
 class LoadWatchlist extends WatchlistEvent {
   const LoadWatchlist();
 
@@ -16,7 +14,6 @@ class LoadWatchlist extends WatchlistEvent {
   String toString() => 'LoadWatchlist';
 }
 
-/// Event to reorder stocks in the watchlist
 class ReorderStocks extends WatchlistEvent {
   final int oldIndex;
   final int newIndex;
@@ -33,7 +30,6 @@ class ReorderStocks extends WatchlistEvent {
   String toString() => 'ReorderStocks(from: $oldIndex, to: $newIndex)';
 }
 
-/// Event to remove a stock from watchlist
 class RemoveStock extends WatchlistEvent {
   final String stockId;
 
@@ -46,7 +42,6 @@ class RemoveStock extends WatchlistEvent {
   String toString() => 'RemoveStock(id: $stockId)';
 }
 
-/// Event to add a new stock to watchlist
 class AddStock extends WatchlistEvent {
   final String symbol;
   final String companyName;
@@ -63,7 +58,6 @@ class AddStock extends WatchlistEvent {
   String toString() => 'AddStock(symbol: $symbol)';
 }
 
-/// Event to refresh watchlist data
 class RefreshWatchlist extends WatchlistEvent {
   const RefreshWatchlist();
 
